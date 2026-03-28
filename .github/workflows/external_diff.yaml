@@ -61,7 +61,7 @@ jobs:
   UpdatePRComment:
     continue-on-error: true  # NOTE: older branches may not have the code to create this comment
     needs: [CallCreateStagingBranch, TriggerDiffWorkflow]
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     if: always()
     steps:
       - name: Checkout repository

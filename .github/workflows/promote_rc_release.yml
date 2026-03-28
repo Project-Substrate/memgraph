@@ -44,7 +44,7 @@ env:
 
 jobs:
   PromotePackage:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     strategy:
       fail-fast: false
       matrix:
@@ -166,7 +166,7 @@ jobs:
           echo "Successfully promoted RC package for ${os} to s3://${release_bucket}/${release_dir}/${package_path}!"
 
   PromoteDocker:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     strategy:
       fail-fast: false
       matrix:

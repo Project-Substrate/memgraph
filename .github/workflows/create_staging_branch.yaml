@@ -33,7 +33,7 @@ on:
 
 jobs:
   CreateStagingBranch:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     outputs:
       pr_number: ${{ steps.get_branch_name.outputs.pr_number }}
       branch_name: ${{ steps.get_branch_name.outputs.branch_name }}

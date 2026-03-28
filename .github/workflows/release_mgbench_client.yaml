@@ -73,7 +73,7 @@ jobs:
 
 
   cleanup_docker:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     if: ${{ inputs.push_to_dockerhub }}
     name: "Clean up Docker tags"
     needs: build_images

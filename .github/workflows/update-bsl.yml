@@ -21,7 +21,7 @@ run-name: Update BSL change date
 jobs:
   update_bsl_change_description:
     name: Update BSL change date
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     steps:
       - name: Checkout code
         uses: actions/checkout@v5

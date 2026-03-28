@@ -45,7 +45,7 @@ jobs:
   determine-sync:
     if: ${{ github.event_name != 'workflow_dispatch' }}
     name: "Determine Sync Mode"
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     outputs:
       mode: ${{ steps.set_sync.outputs.mode }}
     steps:
