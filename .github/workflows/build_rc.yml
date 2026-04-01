@@ -26,7 +26,7 @@ on:
 jobs:
   PrepareReleaseBranch:
     name: Prepare Release Branch
-    runs-on: ubuntu-24.04
+    runs-on: magnon-enterprise-runners
     outputs:
       branch_name: ${{ steps.check_branch.outputs.branch_name }}
       tag_name: ${{ steps.check_tag.outputs.tag_name }}
@@ -219,7 +219,7 @@ jobs:
     name: Trigger MAGE Build
     needs: [PrepareReleaseBranch, PackageArtifact]
     if: ${{ inputs.build_mage && always() }}
-    runs-on: ubuntu-24.04
+    runs-on: magnon-enterprise-runners
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -252,7 +252,7 @@ jobs:
   SetupISSUTestInputs:
     name: Setup ISSU Test Inputs
     needs: [PrepareReleaseBranch, PackageArtifact]
-    runs-on: ubuntu-24.04
+    runs-on: magnon-enterprise-runners
     outputs:
       amd_image_url: ${{ steps.set_image_urls.outputs.amd_image_url }}
       arm_image_url: ${{ steps.set_image_urls.outputs.arm_image_url }}
