@@ -23,7 +23,7 @@ run-name: Clean Conan Cache
 
 jobs:
   prepare-matrix:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     name: List self-hosted runners
     outputs:
       runners: ${{ steps.get-runners.outputs.runners }}
