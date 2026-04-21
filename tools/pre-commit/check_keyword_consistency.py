@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 """
 Script to check consistency of keywords across grammar files.
 

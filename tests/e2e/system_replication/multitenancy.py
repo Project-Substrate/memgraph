@@ -155,7 +155,7 @@ def get_instances_with_recovery(test_name: str):
 def safe_execute(function, *args):
     try:
         function(*args)
-    except:
+    except Exception:
         pass
 
 

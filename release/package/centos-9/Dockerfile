@@ -41,4 +41,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
 # Install PyYAML (only for amzn-2, centos-7, cento-9 and rocky-9)
 RUN pip3 install --user PyYAML
 
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:${PORT:-8080}/healthz || exit 1
 ENTRYPOINT ["sleep", "infinity"]

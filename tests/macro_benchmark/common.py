@@ -15,7 +15,7 @@ from argparse import ArgumentParser
 try:
     import jail
     APOLLO = True
-except:
+except Exception:
     import jail_faker as jail
     APOLLO = False
 

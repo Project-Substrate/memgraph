@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Diff"
 concurrency:
   group: ${{ inputs.ref || github.head_ref || github.sha }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   merge_group:
@@ -63,6 +67,7 @@ on:
 jobs:
   DiffSetup:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     outputs:
       run_community_core: ${{ steps.setup.outputs.run_community_core }}
       run_coverage_core: ${{ steps.setup.outputs.run_coverage_core }}

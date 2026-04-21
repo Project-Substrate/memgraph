@@ -22,7 +22,7 @@ from common import get_absolute_path, set_cpus
 
 try:
     import jail
-except:
+except Exception:
     import jail_faker as jail
 
 
@@ -130,7 +130,7 @@ class Neo:
             env = {"NEO4J_HOME": self.neo4j_home_path}
 
             self.database_bin.run(self.args.runner_bin, args=["console"], env=env, timeout=600, cwd=cwd)
-        except:
+        except Exception:
             shutil.rmtree(self.neo4j_home_path)
             raise Exception("Couldn't run Neo4j!")
 

@@ -297,19 +297,19 @@ def test_global_edge_index_drop_replication(test_name):
     # Exception because one SYNC replica is down
     try:
         execute_and_fetch_all(instance_3_cursor, "create global edge index on :(id)")
-    except:
+    except Exception:
         pass
 
     # Exception because one SYNC replica is down
     try:
         execute_and_fetch_all(instance_3_cursor, "create (n:Test {id: 1})")
-    except:
+    except Exception:
         pass
 
     # Exception because one SYNC replica is down
     try:
         execute_and_fetch_all(instance_3_cursor, "drop global edge index on :(id)")
-    except:
+    except Exception:
         pass
 
     interactive_mg_runner.start(inner_instances_description, "instance_1")

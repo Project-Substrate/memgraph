@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Promote Daily Build to RC
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -43,7 +47,8 @@ env:
 
 jobs:
   CreateReleaseBranch:
-    runs-on: [self-hosted]
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    timeout-minutes: 60
     steps:
       - name: Set up repository
         uses: actions/checkout@v4
@@ -131,4 +136,3 @@ jobs:
 
           # push tag to github
           git push && git push origin $tag_name
-

@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Release build test
 concurrency:
   group: Release-build-test-${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   push:
@@ -46,6 +50,7 @@ jobs:
   TestAll:
     if: ${{ github.event.inputs.os == 'all' }}
     strategy:
+      fail-fast: false
       matrix:
         os: [centos-9, debian-12, debian-13, fedora-42, rocky-10, ubuntu-22.04, ubuntu-24.04]
     uses: ./.github/workflows/reusable_release_tests.yaml

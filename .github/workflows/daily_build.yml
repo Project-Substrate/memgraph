@@ -1,8 +1,12 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 name: Daily build and test
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   schedule:
@@ -39,6 +43,7 @@ jobs:
   # (we may cross over midnight during build/test)
   CurrentDateJob:
     runs-on: [magnon-enterprise-runners]
+    timeout-minutes: 30
     outputs:
       current_date: ${{ steps.set_date.outputs.current_date }}
     steps:
@@ -152,7 +157,8 @@ jobs:
   AggregateBuildTests:
     if: ${{ (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.skip_tests && !inputs.mock)) && always() }}
     needs: [CurrentDateJob,TestBuild,DailyPackageArtifact,DailyDockerArtifact]
-    runs-on: [self-hosted]
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    timeout-minutes: 15
     steps:
       - name: Set up repository
         uses: actions/checkout@v4
@@ -191,7 +197,8 @@ jobs:
   TriggerMageDailyBuild:
     if: ${{ github.event_name == 'schedule' && always() }}
     needs: [CurrentDateJob,DailyPackageArtifact]
-    runs-on: [self-hosted]
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    timeout-minutes: 60
     steps:
       - name: Set up repository
         uses: actions/checkout@v4
@@ -217,7 +224,8 @@ jobs:
 
   ManualTriggerMageDailyBuild:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.trigger_mage && !inputs.mock }}
-    runs-on: [self-hosted]
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    timeout-minutes: 60
     steps:
       - name: Build Request Payload
         run: |
@@ -250,6 +258,7 @@ jobs:
     needs: [CurrentDateJob, DailyDockerArtifact]
     if: ${{ (github.event_name == 'schedule' && always()) || (github.event_name == 'workflow_dispatch' && !inputs.skip_issu_tests) }}
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 15
     outputs:
       amd_image_url: ${{ steps.set_image_urls.outputs.amd_image_url }}
       arm_image_url: ${{ steps.set_image_urls.outputs.arm_image_url }}

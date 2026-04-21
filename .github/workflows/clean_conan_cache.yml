@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Clean Worker Conan Cache
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -24,6 +28,7 @@ run-name: Clean Conan Cache
 jobs:
   prepare-matrix:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     name: List self-hosted runners
     outputs:
       runners: ${{ steps.get-runners.outputs.runners }}
@@ -45,6 +50,7 @@ jobs:
       matrix:
         runner: ${{ fromJson(needs.prepare-matrix.outputs.runners) }}
     runs-on: [ self-hosted, "${{ matrix.runner }}" ]
+    timeout-minutes: 30
     name: Clean Conan Cache for ${{ matrix.runner }}
     env:
       LRU_PERIOD: ${{ inputs.lru_period }}

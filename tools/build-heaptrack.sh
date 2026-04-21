@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 set -e  # Exit on any error
 
 ARCH="$(uname -m)"

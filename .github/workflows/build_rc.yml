@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Build Release Candidate
 concurrency:
   group: Build-Release-Candidate-${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -27,6 +31,7 @@ jobs:
   PrepareReleaseBranch:
     name: Prepare Release Branch
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
     outputs:
       branch_name: ${{ steps.check_branch.outputs.branch_name }}
       tag_name: ${{ steps.check_tag.outputs.tag_name }}
@@ -220,6 +225,7 @@ jobs:
     needs: [PrepareReleaseBranch, PackageArtifact]
     if: ${{ inputs.build_mage && always() }}
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -253,6 +259,7 @@ jobs:
     name: Setup ISSU Test Inputs
     needs: [PrepareReleaseBranch, PackageArtifact]
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 15
     outputs:
       amd_image_url: ${{ steps.set_image_urls.outputs.amd_image_url }}
       arm_image_url: ${{ steps.set_image_urls.outputs.arm_image_url }}
@@ -287,6 +294,7 @@ jobs:
     needs: [SetupISSUTestInputs]
     uses: ./.github/workflows/reusable_issu_test.yaml
     strategy:
+      fail-fast: false
       matrix:
         include:
           - arch: amd

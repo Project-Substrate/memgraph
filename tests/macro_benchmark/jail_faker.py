@@ -141,7 +141,7 @@ class Process:
             f = open("/proc/{}/statm".format(self._proc.pid), "r")
             data_statm = f.read().split()
             f.close()
-        except:
+        except Exception:
             return
         # for a description of these fields see: man proc; man times
         utime, stime, cutime, cstime = map(

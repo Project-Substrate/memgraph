@@ -27,7 +27,7 @@ def connect(**kwargs) -> mgclient.Connection:
     execute_and_fetch_all(connection.cursor(), "USE DATABASE memgraph")
     try:
         execute_and_fetch_all(connection.cursor(), "DROP DATABASE clean")
-    except:
+    except Exception:
         pass
     execute_and_fetch_all(connection.cursor(), "MATCH (n) DETACH DELETE n")
     triggers_list = execute_and_fetch_all(connection.cursor(), "SHOW TRIGGERS;")

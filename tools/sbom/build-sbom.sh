@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 # Generates the SBOM JSON and human-readable table for the Memgraph binary
 
 set -euo pipefail

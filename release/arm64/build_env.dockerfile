@@ -17,3 +17,7 @@ RUN yum clean all
 RUN curl https://s3.eu-west-1.amazonaws.com/deps.memgraph.io/${toolchain_version}/${toolchain_version}-binaries-centos-9-arm64.tar.gz -o /tmp/toolchain.tar.gz \
   && tar xvzf /tmp/toolchain.tar.gz -C /opt \
   && rm /tmp/toolchain.tar.gz
+
+RUN addgroup --system --gid 65532 nonroot && \
+    adduser --system --uid 65532 --gid 65532 --no-create-home nonroot
+USER nonroot

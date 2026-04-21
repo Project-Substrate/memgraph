@@ -33,7 +33,7 @@ def create_multi_db(cursor):
     execute_and_fetch_all(cursor, "USE DATABASE memgraph;")
     try:
         execute_and_fetch_all(cursor, "DROP DATABASE clean;")
-    except:
+    except Exception:
         pass
     execute_and_fetch_all(cursor, "CREATE DATABASE clean;")
 

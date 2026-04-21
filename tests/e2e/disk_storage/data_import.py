@@ -23,7 +23,7 @@ def test_disk_import_fail(connect):
     try:
         execute_and_fetch_all(cursor, "FOREACH (i IN range(1, {num_entries}) | CREATE (n:DiskLabel {{id: i}}));")
         assert False
-    except:
+    except Exception:
         assert True
 
 
@@ -35,7 +35,7 @@ def test_batched_disk_import_passes(connect):
         query = "FOREACH (i IN range({i}, {i} + {step}) | CREATE (n:DiskLabel {{id: {i}}}));".format(i=i, step=step)
         try:
             execute_and_fetch_all(cursor, query)
-        except:
+        except Exception:
             assert False
         cursor.close()
     assert True

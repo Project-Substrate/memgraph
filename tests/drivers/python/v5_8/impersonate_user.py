@@ -19,7 +19,7 @@ from neo4j.exceptions import ClientError, TransientError
 def assert_exception(func):
     try:
         func()
-    except:
+    except Exception:
         return
     assert False, "Expected exception not raised"
 
@@ -27,7 +27,7 @@ def assert_exception(func):
 def assert_no_exception(func):
     try:
         func()
-    except:
+    except Exception:
         assert False, "Exception raised"
 
 
@@ -41,7 +41,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=None, encrypted=False) a
     try:
         with driver.session(impersonated_user="user") as session:
             assert session.run("SHOW CURRENT USER;").values()[0][0] == "user"
-    except:
+    except Exception:
         failed = True
     assert failed
     with driver.session() as session:
@@ -81,7 +81,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
     try:
         with driver.session(impersonated_user="does not exist") as session:
             assert session.run("SHOW CURRENT USER;").values()[0][0] == "admin"
-    except:
+    except Exception:
         failed = True
     assert failed
 
@@ -98,7 +98,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
             assert_exception(lambda: session.run("CREATE (n:Node)"))
             assert_exception(lambda: session.run("CREATE USER abc"))
             assert_no_exception(lambda: session.run("MATCH(n) SET n.p = 2"))
-    except:
+    except Exception:
         failed = True
     assert failed
 
@@ -121,7 +121,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
             assert_exception(lambda: session.run("CREATE (n:Node)"))
             assert_exception(lambda: session.run("CREATE USER abc"))
             assert_exception(lambda: session.run("MATCH(n) SET n.p = 4"))
-    except:
+    except Exception:
         failed = True
     assert failed
 
@@ -145,7 +145,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
             assert_exception(lambda: session.run("CREATE (n:Node)"))
             assert_no_exception(lambda: session.run("CREATE USER abc"))
             assert_exception(lambda: session.run("MATCH(n) SET n.p = 6"))
-    except:
+    except Exception:
         failed = True
 
     assert failed
@@ -170,7 +170,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
             assert_exception(lambda: session.run("CREATE (n:Node)"))
             assert_exception(lambda: session.run("CREATE USER abc"))
             assert_exception(lambda: session.run("MATCH(n) SET n.p = 7"))
-    except:
+    except Exception:
         failed = True
     assert failed
 
@@ -310,7 +310,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
         with driver.session(impersonated_user="user", database="db2") as session:
             session.run("SHOW CURRENT USER;").consume()
         assert False, "Should not be able to impersonate user on db2"
-    except:
+    except Exception:
         pass
 
     # Admin should be able to impersonate user2 when using db2_role context (db2)
@@ -323,7 +323,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
         with driver.session(impersonated_user="user2", database="db1") as session:
             session.run("SHOW CURRENT USER;").consume()
         assert False, "Should not be able to impersonate user2 on db1"
-    except:
+    except Exception:
         pass
 
     # Admin should be able to impersonate user3 when using memgraph_role context (memgraph)
@@ -538,7 +538,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
         with driver.session(impersonated_user="user2", database="memgraph") as session:
             session.run("SHOW DATABASE").consume()
         assert False, "Should not be able to access memgraph"
-    except:
+    except Exception:
         pass
 
     # Test user3 trying to access memgraph (denied)
@@ -546,7 +546,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
         with driver.session(impersonated_user="user3", database="memgraph") as session:
             session.run("SHOW DATABASE").consume()
         assert False, "Should not be able to access memgraph"
-    except:
+    except Exception:
         pass
 
     # Test user3 trying to access db1 (denied)
@@ -554,7 +554,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("admin", ""), encrypted
         with driver.session(impersonated_user="user3", database="db1") as session:
             session.run("SHOW DATABASE").consume()
         assert False, "Should not be able to access db1"
-    except:
+    except Exception:
         pass
 
 print("Testing session isolation between impersonated and non-impersonated sessions...")

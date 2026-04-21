@@ -28,7 +28,7 @@ def connect(**kwargs) -> mgclient.Connection:
     execute_and_fetch_all(cursor, """USE DATABASE memgraph""")
     try:
         execute_and_fetch_all(cursor, """DROP DATABASE clean""")
-    except:
+    except Exception:
         pass
     execute_and_fetch_all(cursor, """MATCH (n) DETACH DELETE n""")
     execute_and_fetch_all(cursor, """DISABLE TTL""")

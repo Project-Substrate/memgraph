@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 import sys
 from json import loads
 from textwrap import dedent

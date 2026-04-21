@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 DISABLE_NODE=${DISABLE_NODE:-false}
 

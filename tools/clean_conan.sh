@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 set -euo pipefail
 
 LRU_PERIOD="${1:-1w}"

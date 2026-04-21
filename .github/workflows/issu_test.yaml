@@ -1,8 +1,12 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: ISSU Test
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:

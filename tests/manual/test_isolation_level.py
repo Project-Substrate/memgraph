@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 """
 This script verifies whether the server is able to correctly

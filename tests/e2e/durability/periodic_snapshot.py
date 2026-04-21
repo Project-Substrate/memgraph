@@ -98,7 +98,7 @@ def number_of_snapshots(dir):
         files = [f for f in entries if os.path.isfile(f)]
         print(files)
         return len(files)
-    except:
+    except Exception:
         return 0
 
 

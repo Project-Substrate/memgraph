@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Script to fetch PR information and generate staging branch name
 # Usage: ./get_pr_info.sh <PR_NUMBER> <GITHUB_TOKEN>

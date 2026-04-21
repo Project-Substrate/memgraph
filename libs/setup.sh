@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Download external dependencies.
 # Don't forget to add/update the license in release/third-party-licenses of added/updated libs!

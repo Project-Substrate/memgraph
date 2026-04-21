@@ -114,7 +114,7 @@ def show_database_func(cursor):
 def try_and_count(cursor, query):
     try:
         execute_and_fetch_all(cursor, query)
-    except:
+    except Exception:
         return 1
     return 0
 

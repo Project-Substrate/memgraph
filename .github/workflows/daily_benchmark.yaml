@@ -1,8 +1,12 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Daily Benchmark
 
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:

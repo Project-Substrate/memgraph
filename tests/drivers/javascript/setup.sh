@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 if [ ! -d "websockify-js" ]; then
     git clone https://github.com/novnc/websockify-js.git

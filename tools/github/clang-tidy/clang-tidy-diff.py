@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 #
 # ===- clang-tidy-diff.py - ClangTidy Diff Checker -----------*- python -*--===#
 #
@@ -277,7 +278,7 @@ def main():
         print("Writing fixes to " + args.export_fixes + " ...")
         try:
             merge_replacement_files(tmpdir, args.export_fixes)
-        except:
+        except Exception:
             sys.stderr.write("Error exporting fixes.\n")
             traceback.print_exc()
 

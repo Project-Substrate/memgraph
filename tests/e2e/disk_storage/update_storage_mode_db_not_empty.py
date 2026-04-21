@@ -21,7 +21,7 @@ def test_forbid_switching_from_memory_to_disk_when_database_is_not_empty(connect
     try:
         execute_and_fetch_all(cursor, "STORAGE MODE ON_DISK_TRANSACTIONAL")
         assert False
-    except:
+    except Exception:
         execute_and_fetch_all(cursor, "MATCH (n) DETACH DELETE n")
         execute_and_fetch_all(cursor, "FREE MEMORY")  # to enforce garbage collection
         assert True

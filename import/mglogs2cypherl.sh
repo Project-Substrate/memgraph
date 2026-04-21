@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 COLOR_ORANGE="\e[38;5;208m"
 COLOR_GREEN="\e[38;5;35m"
 COLOR_RED="\e[0;31m"

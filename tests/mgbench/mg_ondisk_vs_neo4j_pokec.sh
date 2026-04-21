@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Currently only pokec dataset is modified to be used with memgraph on-disk storage
 

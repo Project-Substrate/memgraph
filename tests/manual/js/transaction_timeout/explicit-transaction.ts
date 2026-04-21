@@ -1,3 +1,4 @@
+// Copyright (c) Magnon Compute Corporation. All rights reserved.
 import { Driver, Session } from "neo4j-driver";
 
 import { EMPTY } from "rxjs"

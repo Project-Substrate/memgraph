@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Script to create a staging branch
 # Usage: ./create_staging_branch.sh <BASE_MASTER> <BRANCH_NAME> <COMMIT_SHA> <STAGING_BRANCH> <REPO_URL> <REPO_OWNER>

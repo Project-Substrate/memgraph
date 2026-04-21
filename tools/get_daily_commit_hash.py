@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 from aggregate_build_tests import list_daily_release_packages
 from typing import List
 import re

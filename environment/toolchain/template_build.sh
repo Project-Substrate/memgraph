@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # NOTE: Copy this under memgraph/environment/toolchain/vN/tmp_build.sh, edit and test.
 

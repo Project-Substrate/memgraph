@@ -21,7 +21,7 @@ def test_lock_data_dir_is_disabled(connect):
     try:
         execute_and_fetch_all(cursor, "LOCK DATA DIRECTORY")
         assert False
-    except:
+    except Exception:
         assert True
 
 

@@ -40,4 +40,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
     && nvm install ${NODE_VERSION} \
     && nvm use ${NODE_VERSION}
 
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:${PORT:-8080}/healthz || exit 1
 ENTRYPOINT ["sleep", "infinity"]

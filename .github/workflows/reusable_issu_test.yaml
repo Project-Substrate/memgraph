@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Reusable ISSU Test 
+
+permissions:
+  contents: read
 
 on:
   workflow_call:
@@ -25,6 +29,7 @@ jobs:
   test:
     name: ISSU Test
     runs-on: ${{ inputs.arch == 'arm' && fromJSON('["self-hosted", "ARM64", "Kubernetes"]') || fromJSON('["self-hosted", "X64", "Kubernetes"]') }}
+    timeout-minutes: 15
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

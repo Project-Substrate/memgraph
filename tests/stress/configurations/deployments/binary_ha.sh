@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 MEMGRAPH_BINARY="../../build/memgraph"
 MGCONSOLE_BINARY="../../build/mgconsole"

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 latest=$(curl -s https://api.github.com/repos/memgraph/memgraph/tags | python3 -c "
 import sys, json
 tags = json.load(sys.stdin)

@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Update BSL Change Date
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -22,6 +26,7 @@ jobs:
   update_bsl_change_description:
     name: Update BSL change date
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     steps:
       - name: Checkout code
         uses: actions/checkout@v5

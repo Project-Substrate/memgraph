@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Build Conan Dependency
+
+permissions:
+  contents: read
 
 on:
   workflow_call:
@@ -42,6 +46,7 @@ env:
 jobs:
   build_dependency:
     runs-on: [self-hosted, Linux, "${{ endsWith(inputs.os, '-arm') && 'ARM64' || 'X64' }}", DockerMgBuild]
+    timeout-minutes: 60
     name: "Build Conan Dependency: ${{ inputs.dependency }} on ${{ inputs.os }}"
     steps:
       - name: Checkout code

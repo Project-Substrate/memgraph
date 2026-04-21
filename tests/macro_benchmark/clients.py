@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 
 try:
     import jail
-except:
+except Exception:
     import jail_faker as jail
 
 
@@ -45,7 +45,7 @@ class QueryClient:
             queries_file = os.fdopen(queries_fd, "w")
             queries_file.write("\n".join(queries))
             queries_file.close()
-        except:
+        except Exception:
             queries_file.close()
             os.remove(queries_path)
             raise Exception("Writing queries to temporary file failed")
@@ -105,7 +105,7 @@ class LongRunningClient:
             config_file = os.fdopen(config_fd, "w")
             print(json.dumps(config, indent=4), file=config_file)
             config_file.close()
-        except:
+        except Exception:
             config_file.close()
             os.remove(config_path)
             raise Exception("Writing config to temporary file failed")

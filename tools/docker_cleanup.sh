@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # Docker Cleanup Script for Memgraph
 # This script performs a thorough Docker cleanup while preserving specific images

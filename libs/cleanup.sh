@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # go to script directory
 working_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

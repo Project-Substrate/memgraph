@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 CORE_PATH=${CORE_PATH:-/tmp/cores/core}
 

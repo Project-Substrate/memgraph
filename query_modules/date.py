@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 import re
 from datetime import datetime
 from enum import IntEnum

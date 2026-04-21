@@ -47,4 +47,7 @@ RUN apt-get update && apt-get install -y wget libcurl4 && \
 # Copy mgbench client binary
 COPY --from=mg_bench_client_build_base /memgraph/build/tests/mgbench /bin
 
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:${PORT:-8080}/healthz || exit 1
 ENTRYPOINT ["/bin/client"]

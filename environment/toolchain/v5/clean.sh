@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 PREFIX=/opt/toolchain-v5
 

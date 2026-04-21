@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 BENCHMARK_COMMAND=$1
 BENCHMARK_NAME=$2

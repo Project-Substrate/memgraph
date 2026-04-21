@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Build mgbench client"
+
+permissions:
+  contents: read
 
 on:
   workflow_call:
@@ -36,6 +40,7 @@ jobs:
   mgbench_docker_publish:
     name: "Build mgbench image"
     runs-on: ${{ (inputs.arch == 'arm') && fromJSON('["self-hosted", "DockerMgBuild", "ARM64", "Linux"]') || fromJSON('["self-hosted", "DockerMgBuild", "X64", "Linux"]') }}
+    timeout-minutes: 60
     env:
       DOCKER_ORGANIZATION_NAME: memgraph
       DOCKER_REPOSITORY_NAME: mgbench-client${{ inputs.test_docker_push && '-test' || '' }}

@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Reusable release tests
+
+permissions:
+  contents: read
 
 on:
   workflow_call:
@@ -1234,7 +1238,8 @@ jobs:
 
   aggregate_results:
     name: "Aggregate Test Results"
-    runs-on: [self-hosted]
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    timeout-minutes: 15
     needs:
       - community_build
       - coverage_build

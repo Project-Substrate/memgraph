@@ -132,7 +132,7 @@ def main_test(data_directory, snapshot, database, clean):
     # 1
     try:
         execute_and_fetch_all(cursor, f"RECOVER SNAPSHOT '{snapshot}';")
-    except:
+    except Exception:
         assert not clean, "Failed to recover from snapshot even though force is not required"
     if not clean:
         execute_and_fetch_all(cursor, f"RECOVER SNAPSHOT '{snapshot}' FORCE;")
@@ -708,7 +708,7 @@ if __name__ == "__main__":
     try:
         shutil.rmtree(TMP_DIR)
         os.mkdir(TMP_DIR)
-    except:
+    except Exception:
         pass
     generate_tmp_snapshot()
 
@@ -719,7 +719,7 @@ if __name__ == "__main__":
     interactive_mg_runner.kill_all()
     try:
         shutil.rmtree(TMP_DIR)
-    except:
+    except Exception:
         pass
 
     sys.exit(res)

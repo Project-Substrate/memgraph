@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 class BaseClass:
     def __init__(self, num_to_return=1) -> None:
         self._init_is_called = False

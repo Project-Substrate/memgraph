@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 GO_VERSION="1.18.9"
 GO_VERSION_DIR="/opt/go$GO_VERSION"

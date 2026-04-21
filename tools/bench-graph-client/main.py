@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 """
 Bench Graph client responsible for sending benchmarking data in JSON format to

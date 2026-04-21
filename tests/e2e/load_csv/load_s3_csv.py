@@ -88,7 +88,7 @@ def main():
     try:
         s3_client.head_bucket(Bucket=BUCKET_NAME)
         print(f"Bucket '{BUCKET_NAME}' already exists")
-    except:
+    except Exception:
         s3_client.create_bucket(Bucket=BUCKET_NAME)
         print(f"Created bucket '{BUCKET_NAME}'")
 

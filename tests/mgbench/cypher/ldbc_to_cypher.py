@@ -185,7 +185,7 @@ if __name__ == "__main__":
                 downloaded_file = helpers.download_file(INTERACTIVE_LINK[file_size], output_directory.absolute())
                 print("Unpacking the file..." + downloaded_file)
                 files_present = helpers.unpack_tar_zst(Path(downloaded_file))
-            except:
+            except Exception:
                 print("Issue with downloading and unpacking the file, check if links are working properly.")
                 raise
 
@@ -407,7 +407,7 @@ if __name__ == "__main__":
                 downloaded_file = helpers.download_file(BI_LINK[file_size], output_directory.absolute())
                 print("Unpacking the file..." + downloaded_file)
                 files_present = helpers.unpack_tar_zst(Path(downloaded_file))
-            except:
+            except Exception:
                 print("Issue with downloading and unpacking the file, check if links are working properly.")
                 raise
 

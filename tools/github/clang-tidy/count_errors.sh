@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # the first sort | uniq is necessary, because the same occurrence of the same error
 # can be reported from headers when they are included in multiple source files

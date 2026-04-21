@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 # Build Memgraph with Python 3.5+ support and run Memgraph so that it loads
 # this file as a Query Module. The procedure implemented in this module is just
 # a rewrite of the `example.c` procedure.

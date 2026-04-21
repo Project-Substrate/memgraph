@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 # This will run the build-sbom.sh script to obtain the SBOM for the Memgraph binary
 # then it will scan the Docker container and combine the reports.
 

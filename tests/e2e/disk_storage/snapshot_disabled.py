@@ -21,7 +21,7 @@ def test_snapshot_is_disabled(connect):
     try:
         execute_and_fetch_all(cursor, "CREATE SNAPSHOT")
         assert False
-    except:
+    except Exception:
         assert True
 
 

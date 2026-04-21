@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Promote RC to Release
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -45,6 +49,7 @@ env:
 jobs:
   PromotePackage:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -167,6 +172,7 @@ jobs:
 
   PromoteDocker:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:

@@ -1,7 +1,11 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Mgbench Bolt Client Build and Publish Docker Image"
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -74,6 +78,7 @@ jobs:
 
   cleanup_docker:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
     if: ${{ inputs.push_to_dockerhub }}
     name: "Clean up Docker tags"
     needs: build_images

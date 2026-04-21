@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 set -Eeuo pipefail
 
 # Set noninteractive frontend to avoid prompts during package installation

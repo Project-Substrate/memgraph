@@ -1,3 +1,4 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Package memgraph
 
 # Concurrency control: limit to one run per PR, but allow multiple manual runs
@@ -5,6 +6,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.number || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+
+permissions:
+  contents: read
 
 on:
   pull_request:
@@ -101,6 +105,7 @@ on:
 jobs:
   PackageSetup:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     outputs:
       run_package_centos_9: ${{ steps.setup.outputs.run_package_centos_9 }}
       run_package_centos_10: ${{ steps.setup.outputs.run_package_centos_10 }}

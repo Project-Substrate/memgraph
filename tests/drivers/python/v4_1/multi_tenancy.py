@@ -40,11 +40,11 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         session.run("MATCH(n) DETACH DELETE n;").consume()
         try:
             session.run("DROP DATABASE db1;").consume()
-        except:
+        except Exception:
             pass
         try:
             session.run("DROP DATABASE db2;").consume()
-        except:
+        except Exception:
             pass
         session.run('CREATE (:Node{db:"memgraph"})').consume()
 
@@ -78,7 +78,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("USE DATABASE db1").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -89,7 +89,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("USE DATABASE db2").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -112,7 +112,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("USE DATABASE db2").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -129,7 +129,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
     with driver.session() as session:
         try:
             session.run("DROP DATABASE rename_test").consume()
-        except:
+        except Exception:
             pass
         session.run("CREATE DATABASE rename_test").consume()
         session.run("USE DATABASE rename_test").consume()
@@ -155,7 +155,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("USE DATABASE rename_test").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -166,7 +166,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("RENAME DATABASE memgraph TO new_name").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -174,7 +174,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("RENAME DATABASE non_existent TO new_name").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 
@@ -183,7 +183,7 @@ with GraphDatabase.driver("bolt://localhost:7687", auth=("", ""), encrypted=Fals
         failed = False
         try:
             session.run("RENAME DATABASE renamed_test TO conflict_db").consume()
-        except:
+        except Exception:
             failed = True
         assert failed
 

@@ -1,4 +1,5 @@
 #! /bin/bash
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 MG_SNAPSHOT_DIR="/opt/memgraph/mg_data/snapshots"
 MG_WAL_DIR="/opt/memgraph/mg_data/wal"

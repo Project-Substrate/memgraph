@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Create Staging Branch"
+
+permissions:
+  contents: read
 
 on:
   workflow_call:
@@ -34,6 +38,7 @@ on:
 jobs:
   CreateStagingBranch:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 15
     outputs:
       pr_number: ${{ steps.get_branch_name.outputs.pr_number }}
       branch_name: ${{ steps.get_branch_name.outputs.branch_name }}

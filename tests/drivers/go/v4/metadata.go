@@ -1,3 +1,5 @@
+// Copyright (c) Magnon Compute Corporation. All rights reserved.
+
 package main
 
 import "github.com/neo4j/neo4j-go-driver/neo4j"

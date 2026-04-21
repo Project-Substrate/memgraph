@@ -21,7 +21,7 @@ def test_forbid_switching_from_disk_to_memory(connect):
     try:
         execute_and_fetch_all(cursor, "STORAGE MODE IN_MEMORY_TRANSACTIONAL")
         assert False
-    except:
+    except Exception:
         assert True
 
 

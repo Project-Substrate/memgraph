@@ -1,8 +1,12 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Jepsen HA Stress Tests"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}-${{ inputs.mt }}
   cancel-in-progress: false
+
+permissions:
+  contents: read
 
 on:
   workflow_call:

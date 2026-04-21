@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 import base64
 import io
 import json

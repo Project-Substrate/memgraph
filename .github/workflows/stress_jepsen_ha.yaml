@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Jepsen HA Stress Tests"
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -46,6 +50,7 @@ jobs:
     if: ${{ github.event_name != 'workflow_dispatch' }}
     name: "Determine Sync Mode"
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     outputs:
       mode: ${{ steps.set_sync.outputs.mode }}
     steps:

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 """
 This script can be pointed at a memgraph server that
@@ -100,7 +101,7 @@ def forward_progress(args):
             conn = mgclient.connect(host=args.reconnect_host, port=args.reconnect_port)
             conn.autocommit = True
             cursor = conn.cursor()
-        except:
+        except Exception:
             pass
 
 

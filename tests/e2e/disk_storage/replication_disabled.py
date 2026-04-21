@@ -21,7 +21,7 @@ def test_replication_is_disabled(connect):
     try:
         execute_and_fetch_all(cursor, "SET REPLICATION ROLE TO MAIN")
         assert False
-    except:
+    except Exception:
         assert True
 
 

@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Build Conan Dependency
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:

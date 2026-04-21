@@ -21,7 +21,7 @@ def test_free_memory_is_disabled(connect):
     try:
         execute_and_fetch_all(cursor, "FREE MEMORY")
         assert False
-    except:
+    except Exception:
         assert True
 
 

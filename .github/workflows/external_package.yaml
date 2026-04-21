@@ -1,8 +1,12 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Package Memgraph (External)"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.inputs.pr_number }}
   cancel-in-progress: true
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
@@ -78,6 +82,7 @@ jobs:
     continue-on-error: true  # NOTE: older branches may not have the code to create this comment
     needs: [CallCreateStagingBranch, TriggerPackageWorkflow]
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     if: always()
     steps:
       - name: Checkout repository

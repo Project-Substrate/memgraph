@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 #
 # ===- run-clang-tidy.py - Parallel clang-tidy runner --------*- python -*--===#
 #
@@ -149,7 +150,7 @@ def check_clang_apply_replacements_binary(args):
     """Checks if invoking supplied clang-apply-replacements binary works."""
     try:
         subprocess.check_call([args.clang_apply_replacements_binary, "--version"])
-    except:
+    except Exception:
         print(
             "Unable to run clang-apply-replacements. Is clang-apply-replacements " "binary correctly specified?",
             file=sys.stderr,
@@ -289,7 +290,7 @@ def main():
                 subprocess.check_call(invocation, stdout=dev_null)
         else:
             subprocess.check_call(invocation)
-    except:
+    except Exception:
         print("Unable to run clang-tidy.", file=sys.stderr)
         sys.exit(1)
 
@@ -343,7 +344,7 @@ def main():
         print("Writing fixes to " + args.export_fixes + " ...")
         try:
             merge_replacement_files(tmpdir, args.export_fixes)
-        except:
+        except Exception:
             print("Error exporting fixes.\n", file=sys.stderr)
             traceback.print_exc()
             return_code = 1
@@ -352,7 +353,7 @@ def main():
         print("Applying fixes ...")
         try:
             apply_fixes(args, tmpdir)
-        except:
+        except Exception:
             print("Error applying fixes.\n", file=sys.stderr)
             traceback.print_exc()
             return_code = 1

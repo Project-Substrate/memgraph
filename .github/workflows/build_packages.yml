@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: "Build and Upload Packages"
+
+permissions:
+  contents: read
 
 on:
   pull_request:
@@ -12,11 +16,16 @@ on:
         description: "PR number to use for the build (e.g., 1234)"
         required: true
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   get-pr-number:
     if: (github.event.pull_request.merged == true && github.ref == 'refs/heads/master') || github.event_name == 'workflow_dispatch'
     name: "Get PR Number"
     runs-on: [self-hosted, Linux, X64, DockerMgBuild]
+    timeout-minutes: 30
     outputs:
       pr_number: ${{ steps.get_pr.outputs.pr_number }}
     steps:
@@ -46,6 +55,7 @@ jobs:
     uses: ./.github/workflows/reusable_package.yaml
     secrets: inherit
     strategy:
+      fail-fast: false
       matrix:
         arch: [amd, arm]
     with:
@@ -62,6 +72,7 @@ jobs:
     name: "Trigger Repository Dispatch"
     needs: [get-pr-number, build-packages]
     runs-on: [self-hosted, Linux, X64, DockerMgBuild]
+    timeout-minutes: 30
     steps:
       - name: Set up repository
         uses: actions/checkout@v4

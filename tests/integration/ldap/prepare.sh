@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 function echo_info { printf "\n\033[1;36m~~ $1 ~~\033[0m\n"; }
 function echo_success { printf "\n\n\033[1;32m~~ $1 ~~\033[0m\n"; }

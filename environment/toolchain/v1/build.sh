@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 
 # helpers
 pushd () { command pushd "$@" > /dev/null; }
