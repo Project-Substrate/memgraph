@@ -25,7 +25,7 @@ run-name: Update BSL change date
 jobs:
   update_bsl_change_description:
     name: Update BSL change date
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 30
     steps:
       - name: Checkout code
