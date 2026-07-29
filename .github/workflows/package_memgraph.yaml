@@ -104,7 +104,7 @@ on:
 
 jobs:
   PackageSetup:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 30
     outputs:
       run_package_centos_9: ${{ steps.setup.outputs.run_package_centos_9 }}

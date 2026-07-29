@@ -77,7 +77,7 @@ jobs:
 
 
   cleanup_docker:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 60
     if: ${{ inputs.push_to_dockerhub }}
     name: "Clean up Docker tags"

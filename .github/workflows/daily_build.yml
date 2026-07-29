@@ -42,7 +42,7 @@ jobs:
   # so that the daily build is sent to the right folder!
   # (we may cross over midnight during build/test)
   CurrentDateJob:
-    runs-on: [magnon-enterprise-runners]
+    runs-on: [magnon-enterprise-runners-substrate]
     timeout-minutes: 30
     outputs:
       current_date: ${{ steps.set_date.outputs.current_date }}
@@ -157,7 +157,7 @@ jobs:
   AggregateBuildTests:
     if: ${{ (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.skip_tests && !inputs.mock)) && always() }}
     needs: [CurrentDateJob,TestBuild,DailyPackageArtifact,DailyDockerArtifact]
-    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners-substrate
     timeout-minutes: 15
     steps:
       - name: Set up repository
@@ -197,7 +197,7 @@ jobs:
   TriggerMageDailyBuild:
     if: ${{ github.event_name == 'schedule' && always() }}
     needs: [CurrentDateJob,DailyPackageArtifact]
-    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners-substrate
     timeout-minutes: 60
     steps:
       - name: Set up repository
@@ -224,7 +224,7 @@ jobs:
 
   ManualTriggerMageDailyBuild:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.trigger_mage && !inputs.mock }}
-    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners-substrate
     timeout-minutes: 60
     steps:
       - name: Build Request Payload
@@ -257,7 +257,7 @@ jobs:
     name: Setup ISSU Test Inputs
     needs: [CurrentDateJob, DailyDockerArtifact]
     if: ${{ (github.event_name == 'schedule' && always()) || (github.event_name == 'workflow_dispatch' && !inputs.skip_issu_tests) }}
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 15
     outputs:
       amd_image_url: ${{ steps.set_image_urls.outputs.amd_image_url }}

@@ -30,7 +30,7 @@ on:
 jobs:
   PrepareReleaseBranch:
     name: Prepare Release Branch
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 60
     outputs:
       branch_name: ${{ steps.check_branch.outputs.branch_name }}
@@ -224,7 +224,7 @@ jobs:
     name: Trigger MAGE Build
     needs: [PrepareReleaseBranch, PackageArtifact]
     if: ${{ inputs.build_mage && always() }}
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 60
     steps:
       - name: Checkout code
@@ -258,7 +258,7 @@ jobs:
   SetupISSUTestInputs:
     name: Setup ISSU Test Inputs
     needs: [PrepareReleaseBranch, PackageArtifact]
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 15
     outputs:
       amd_image_url: ${{ steps.set_image_urls.outputs.amd_image_url }}

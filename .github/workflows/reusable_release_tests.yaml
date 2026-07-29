@@ -1238,7 +1238,7 @@ jobs:
 
   aggregate_results:
     name: "Aggregate Test Results"
-    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners-substrate
     timeout-minutes: 15
     needs:
       - community_build

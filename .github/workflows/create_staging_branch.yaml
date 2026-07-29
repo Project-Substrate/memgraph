@@ -37,7 +37,7 @@ on:
 
 jobs:
   CreateStagingBranch:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 15
     outputs:
       pr_number: ${{ steps.get_branch_name.outputs.pr_number }}

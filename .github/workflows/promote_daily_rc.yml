@@ -47,7 +47,7 @@ env:
 
 jobs:
   CreateReleaseBranch:
-    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners
+    runs-on: [self-hosted]  # TODO: verify this should not be magnon-enterprise-runners-substrate
     timeout-minutes: 60
     steps:
       - name: Set up repository
