@@ -48,7 +48,7 @@ env:
 
 jobs:
   PromotePackage:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -171,7 +171,7 @@ jobs:
           echo "Successfully promoted RC package for ${os} to s3://${release_bucket}/${release_dir}/${package_path}!"
 
   PromoteDocker:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 60
     strategy:
       fail-fast: false

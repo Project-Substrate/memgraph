@@ -27,7 +27,7 @@ run-name: Clean Conan Cache
 
 jobs:
   prepare-matrix:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 30
     name: List self-hosted runners
     outputs:
